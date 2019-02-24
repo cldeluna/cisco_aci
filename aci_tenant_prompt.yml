@@ -3,6 +3,12 @@
   hosts: aci
   gather_facts: no
 
+  vars_prompt:
+    - name: "new_tenant"
+      prompt: "Enter New Tenant Name:"
+      default: "LAX_Tenant"
+      private: no
+
   tasks:
   - name: Query all tenants
     aci_tenant:
@@ -21,10 +27,3 @@
     debug:
       var: all_tenants
       verbosity: 2
-
-  - name: Prompt for the new Tenant Name
-    vars_prompt:
-      - name: "new_tenant"
-        prompt: "Enter New Tenant Name:"
-        default: "LAX_Tenant"
-        private: no
