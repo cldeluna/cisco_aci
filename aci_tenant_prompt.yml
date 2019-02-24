@@ -1,0 +1,30 @@
+---
+- name: ACI Playbook
+  hosts: aci
+  gather_facts: no
+
+  tasks:
+  - name: Query all tenants
+    aci_tenant:
+      host: sandboxapicdc.cisco.com
+      username: admin
+      password: ciscopsdt
+      validate_certs: no
+      use_ssl: yes
+      timeout: 90
+
+      state: query
+    delegate_to: localhost
+    register: all_tenants
+
+  - name: Display RAW APIC Results
+    debug:
+      var: all_tenants
+      verbosity: 2
+
+  - name: Prompt for the new Tenant Name
+    vars_prompt:
+      - name: "new_tenant"
+        prompt: Enter New Tenant Name:
+        default: "LAX_Tenant"
+        private: no

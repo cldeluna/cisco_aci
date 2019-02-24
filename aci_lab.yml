@@ -16,6 +16,7 @@
       state: query
     delegate_to: localhost
     register: all_tenants
+
   - name: Display RAW APIC Results
     debug:
       var: all_tenants
