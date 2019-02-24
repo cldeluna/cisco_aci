@@ -5,6 +5,7 @@
 
   vars_files:
     - "./host_vars/{{ inventory_host }}-fvTenant.yml"
+    - ./host_vars/test.yml
 
   vars:
     aci_user: admin
