@@ -25,6 +25,6 @@
   - name: Prompt for the new Tenant Name
     vars_prompt:
       - name: "new_tenant"
-        prompt: Enter New Tenant Name:
+        prompt: "Enter New Tenant Name:"
         default: "LAX_Tenant"
         private: no
