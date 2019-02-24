@@ -37,7 +37,7 @@
     register: tenant_results
 
   - debug:
-    var: tenant_results
+      var: tenant_results
 
   - name: Query all tenants
     aci_tenant:
