@@ -21,6 +21,7 @@
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
       password: "{{ aci_pwd }}"
+      validate_certs: no
       tenant: production
       description: Production tenant
       state: present
