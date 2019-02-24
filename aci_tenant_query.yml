@@ -31,3 +31,11 @@
 
   - local_action: copy content="{{ tenantlist | to_nice_yaml }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.yml"
   - local_action: copy content="{{ tenantlist | to_nice_json }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.json"
+
+- name: ACI VRF
+  hosts: aci
+  gather_facts: no
+
+  tasks:
+  - debug:
+      var: tenantlist
