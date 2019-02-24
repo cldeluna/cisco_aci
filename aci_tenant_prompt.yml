@@ -9,9 +9,14 @@
     aci_host: sandboxapicdc.cisco.com
 
   vars_prompt:
-    - name: "new_tenant"
-      prompt: "Enter New Tenant Name:"
+    - name: "tenant_name"
+      prompt: "Enter Tenant Name:"
       default: "LAX_Tenant"
+      private: no
+
+    - name: "tenant_state"
+      prompt: "Enter Tenant State (absent | present | query:"
+      default: "query"
       private: no
 
   tasks:
@@ -19,15 +24,15 @@
   - name: Set Date
     set_fact: curr_date="{{lookup('pipe','date \"+%Y-%m-%d %H:%M\"')}}"
 
-  - name: Add the New Tenant
+  - name: "Add, Delete, or Query Tenant {{ tenant_name }}"
     aci_tenant:
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
       password: "{{ aci_pwd }}"
       validate_certs: no
-      tenant: "{{ new_tenant }}"
-      description: "New Tenant {{ new_tenant }} Created on {{ curr_date }}"
-      state: present
+      tenant: "{{ tenant_name }}"
+      description: "Tenant {{ new_tenant }} Action {{tenant_state}} on {{ curr_date }}"
+      state: "{{ tenant_state }}"
     delegate_to: localhost
 
   - name: Query all tenants
@@ -46,4 +51,5 @@
   - name: Display RAW APIC Results
     debug:
       var: all_tenants
-#      verbosity: 2
+      verbosity: 2
+
