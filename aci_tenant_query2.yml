@@ -52,12 +52,11 @@
       private: no
 
     - name: "vrf_name"
-      prompt: "Enter Tenant Name:"
-      default: "LAX_Tenant"
+      prompt: "Enter VRF Name:"
       private: no
 
     - name: "vrf_state"
-      prompt: "Enter Tenant State (absent | present | query:"
+      prompt: "Enter Tenant State (absent | present | query):"
       default: "query"
       private: no
 
