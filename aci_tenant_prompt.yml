@@ -1,5 +1,5 @@
 ---
-- name: ACI Playbook to Add a Tenant and Query
+- name: ACI Playbook to Perform User Prompted Action on Tenant
   hosts: aci
   gather_facts: no
 
@@ -34,6 +34,10 @@
       description: "Tenant {{ tenant_name }} Action {{tenant_state}} on {{ curr_date }}"
       state: "{{ tenant_state }}"
     delegate_to: localhost
+    register: tenant_results
+
+  - debug:
+    var: tenant_results
 
   - name: Query all tenants
     aci_tenant:
