@@ -1,5 +1,5 @@
 ---
-- name: ACI Playbook
+- name: ACI Playbook to Add a Tenant and Query
   hosts: aci
   gather_facts: no
 
@@ -16,6 +16,9 @@
 
   tasks:
 
+  - name: Set Date
+    set_fact: curr_date="{{lookup('pipe','date \"+%Y-%m-%d %H:%M\"')}}"
+
   - name: Add the New Tenant
     aci_tenant:
       host: "{{ aci_host }}"
@@ -23,7 +26,7 @@
       password: "{{ aci_pwd }}"
       validate_certs: no
       tenant: "{{ new_tenant }}"
-      description: Production tenant
+      description: "New Tenant {{ new_tenant }} Created on {{ curr_date }}"
       state: present
     delegate_to: localhost
 
