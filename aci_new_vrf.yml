@@ -3,6 +3,9 @@
   hosts: aci
   gather_facts: no
 
+  vars_files:
+    - "./host_vars/{{ inventory_host }}-fvTenant.yml"
+
   vars:
     aci_user: admin
     aci_pwd: ciscopsdt
@@ -20,5 +23,8 @@
 #      private: no
 
   tasks:
-    - name: Get Tenant List Variables
-      include_vars: "./host_vars/{{ inventory_host }}-fvTenant.yml"
+
+  - name: Display all variables/facts known for a host
+    debug:
+      var: hostvars[inventory_hostname]
+    tags: debug_info
