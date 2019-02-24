@@ -1,0 +1,32 @@
+---
+- name: ACI Tenant Query Playbook
+  hosts: aci
+  gather_facts: no
+
+  vars:
+    aci_user: admin
+    aci_pwd: ciscopsdt
+    aci_host: sandboxapicdc.cisco.com
+
+  tasks:
+  - name: Query all tenants task
+    aci_tenant:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      timeout: 90
+      state: query
+    delegate_to: localhost
+    register: all_tenants
+
+
+  - set_fact:
+      tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
+
+  - name: Tenants returned in Query ==>
+    debug:
+      var: tenantlist
+
+
+  - local_action: copy content="{{ tenantlist | to_nice_json }}" dest="./logs/{{ inventory_hostname }}-fvTenant.json"
