@@ -66,5 +66,8 @@
   - set_fact:
       tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
 
-  - debug:
-      msg: " Tenants returned in query: {{ tenantlist }} "
+  - name: Tenants returned in Query ==>
+    debug:
+      msg: " \t{{ item }}\n "
+    loop: "{{ tenantlist }}"
+
