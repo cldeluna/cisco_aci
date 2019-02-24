@@ -43,6 +43,6 @@
   - name: with_indexed_items -> loop
     debug:
       msg: "{{ index }} - {{ item }}"
-    loop: " {{ tenantlist }}"
+    loop: " {{ tenantlist|flatten(levels=1) }}"
     loop_control:
       index_var: index
