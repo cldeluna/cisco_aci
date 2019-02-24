@@ -31,7 +31,7 @@
 
   - name: with_indexed_items -> loop
     debug:
-      msg: "{{ index }} - {{ item }}"
+      msg: "Item Index {{ index }} - {{ item }}"
     loop: "{{ tenantlist }}"
     loop_control:
       index_var: index
