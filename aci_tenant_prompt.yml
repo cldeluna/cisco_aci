@@ -22,7 +22,7 @@
       username: "{{ aci_user }}"
       password: "{{ aci_pwd }}"
       validate_certs: no
-      tenant: production
+      tenant: "{{ new_tenant }}"
       description: Production tenant
       state: present
     delegate_to: localhost
