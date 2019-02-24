@@ -29,4 +29,4 @@
       var: tenantlist
 
 
-  - local_action: copy content="{{ tenantlist | to_nice_yaml }}" dest="./group_vars/{{ inventory_hostname }}-fvTenant.json"
+  - local_action: copy content="{{ tenantlist | to_nice_yaml }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.yml"
