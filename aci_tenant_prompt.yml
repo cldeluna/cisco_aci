@@ -58,7 +58,7 @@
       verbosity: 1
 
   - debug:
-      msg: "{{ item.fvTenant.attributes.name }}"
+      var: "{{ item.fvTenant.attributes.name }}"
       verbosity: 2
     with_items:
       - "{{  all_tenants.current  }}"
