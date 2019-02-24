@@ -58,4 +58,13 @@
       verbosity: 1
 
   - debug:
-      msg: "{{ all_tenants.current.fvTenant.attributes | map(attribute='name') |list }}"
+      msg: "{{ item.fvTenant.attributes.name }}"
+      verbosity: 2
+    with_items:
+      - "{{  all_tenants.current  }}"
+
+  - set_fact:
+      tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
+
+  - debug:
+      var: tenantlist
