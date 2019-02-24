@@ -67,4 +67,4 @@
       tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
 
   - debug:
-      var: tenantlist
+      msg: " Tenants returned in query: {{ tenantlist }} "
