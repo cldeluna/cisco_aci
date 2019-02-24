@@ -63,5 +63,5 @@
 
   tasks:
   - debug:
-      var: "{{ tenantlist[{{ tenant_index }}]}}"
+      var: "{{ tenantlist['{{ tenant_index }}']}}"
 
