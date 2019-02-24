@@ -35,7 +35,7 @@ localhost ansible_connection=local
 sandboxapicdc.cisco.com
 ```
 
->  # ansible-playbook -i hosts wlc\_show\_json_vault.yml --ask-vault-pass
+>  # ansible-playbook -i hosts aci\_tenant_prompt.yml
 
 
 ```
