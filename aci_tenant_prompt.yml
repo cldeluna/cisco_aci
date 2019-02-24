@@ -31,7 +31,7 @@
       password: "{{ aci_pwd }}"
       validate_certs: no
       tenant: "{{ tenant_name }}"
-      description: "Tenant {{ new_tenant }} Action {{tenant_state}} on {{ curr_date }}"
+      description: "Tenant {{ tenant_name }} Action {{tenant_state}} on {{ curr_date }}"
       state: "{{ tenant_state }}"
     delegate_to: localhost
 
