@@ -68,6 +68,6 @@
 
   - name: Tenants returned in Query ==>
     debug:
-      msg: " /t{{ item }}/n "
+      var: "{{ item }}"
     loop: "{{ tenantlist }}"
 
