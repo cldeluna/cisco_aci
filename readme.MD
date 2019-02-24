@@ -19,7 +19,7 @@ root@0bd4731cb725:/ansible/cisco_aci#
 
 ```
 
-These playbooks utilize the [**aireos_command**](https://docs.ansible.com/ansible/2.4/aireos_command_module.html) module which to date still requires the provider construct.  
+These playbooks utilize the [**aci_tenant – Manage tenants (fv:Tenant)**](https://docs.ansible.com/ansible/latest/modules/aci_tenant_module.html#aci-tenant-module) module.  
 
 
 #### Playbook Run Examples ####
