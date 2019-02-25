@@ -2,6 +2,8 @@
 ###############################################################################
 # This interactive playbook queries for information and action and performs
 # the selection Tenant action against the DevNet Sandbox APIC
+# EXECUTION:
+# ansible-playbook -i hosts aci_tenant_prompt.yml
 ###############################################################################
 
 - name: ACI Playbook to Perform User Prompted Action on Tenant
