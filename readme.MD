@@ -1,7 +1,30 @@
 
-## Sample Ansible Playbooks for Cisco AIC using Ansible Core Modules ##
+## Sample Ansible Playbooks for Cisco ACI using Ansible Core Modules ##
 
-The playbooks contained within this repository are examples only.  They are intended to illustrate some basic functions agains an ACI Fabric utilizing the ACI Ansible Core modules.
+The playbooks contained within this repository are examples only.  They are intended to illustrate some basic functions against an ACI Fabric utilizing the ACI Ansible Core modules.
+
+These playbook use the following ACI Modules:
+- [aci_tenant – Manage tenants (fv:Tenant)](https://docs.ansible.com/ansible/latest/modules/aci_tenant_module.html#aci-tenant-module)
+- [aci_vrf – Manage contexts or VRFs (fv:Ctx)](https://docs.ansible.com/ansible/latest/modules/aci_vrf_module.html#aci-vrf-module)
+
+REF: [Ansible Network Module Index](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html)
+
+
+##### Main Playbooks ######
+ - aci\_lab.yml      
+ 	-- Basic starter Playbook to Query Tenants in an ACI Fabric
+ - aci\_tenant_prompt.yml  
+    -- Basic Playbook which prompts for tenant name and action and then displays all tenants in the ACI Fabric
+ - aci\_new_vrf.yml  
+    -- Playbook which queries Tenants and allows user to select the specific Tenant which requires a VRF action (add state=present, remove state=absent, or query (default), performs requested action and queries specified tenant for list of VRfs
+    
+##### Miscellaneous and Supporting Playbooks ######
+ - aci\_tenant_query.yml  
+    -- Test Playbook
+ - aci\_tenant_query2.yml  
+    -- Test Playbook
+ - all\_host_vars.yml  
+ 	-- Sample Playbook to display all variables for a host defined in the playbook namespace
 
 ```
 root@0bd4731cb725:/ansible/cisco_aci# git pull
@@ -9,17 +32,30 @@ Already up-to-date.
 root@0bd4731cb725:/ansible/cisco_aci# tree
 .
 |-- aci_lab.yml
+|-- aci_new_vrf.yml
 |-- aci_tenant_prompt.yml
+|-- aci_tenant_query.yml
+|-- aci_tenant_query2.yml
+|-- all_host_vars.yml
 |-- ansible.cfg
 |-- ansible.log
-`-- hosts
+|-- group_vars
+|   `-- creds.yml
+|-- host_vars
+|   |-- host_var_directory
+|   |-- sandboxapicdc.cisco.com-fvTenant.json
+|   |-- sandboxapicdc.cisco.com-fvTenant.yml
+|   `-- test.yml
+|-- hosts
+|-- logs
+|   `-- output_directory
+`-- readme.MD
 
-0 directories, 5 files
+3 directories, 16 files
 root@0bd4731cb725:/ansible/cisco_aci#
 
 ```
 
-These playbooks utilize the [**aci_tenant – Manage tenants (fv:Tenant)**](https://docs.ansible.com/ansible/latest/modules/aci_tenant_module.html#aci-tenant-module) module.  
 
 
 #### Playbook Run Examples ####
@@ -41,7 +77,7 @@ sandboxapicdc.cisco.com
 ```
 root@0bd4731cb725:/ansible/cisco_aci# ansible-playbook -i hosts aci_tenant_prompt.yml
 Enter Tenant Name: [LAX_Tenant]: AMS_Tenant
-Enter Tenant State (absent | present | query: [query]: present
+Enter Tenant State (absent | present | query) [query]: present
 
 PLAY [ACI Playbook to Perform User Prompted Action on Tenant] ****************************************************************************************************************
 
