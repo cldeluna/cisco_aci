@@ -81,7 +81,7 @@
   - debug:
       var: selected_tenant
 
-  - name: "Add, Delete, or Query Tenant {{ selected tenant }}"
+  - name: "Add, Delete, or Query Tenant {{ selected_tenant }}"
     aci_vrf:
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
