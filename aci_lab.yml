@@ -31,6 +31,7 @@
     debug:
       var: all_tenants['current']
       verbosity: 2
+
   - name: Display Specific Values from APIC Results
     debug:
       msg: "Tenant Name: {{ item['fvTenant']['attributes']['name'] }}"
@@ -38,12 +39,14 @@
     with_items:
       - "{{ all_tenants['current'] }}"
     no_log: True
+
   - name: Clean Tenant Listing
     set_fact:
       clean_out: "{{ clean_out|default([]) + [item['fvTenant']['attributes']['name']] }}"
     with_items:
       - "{{ all_tenants['current'] }}"
     no_log: True
+
   - name: Tenant Listing
     debug:
       msg: "Tenant Name: {{ item }}"
