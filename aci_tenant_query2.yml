@@ -69,5 +69,5 @@
   - debug:
       var: tenant_idx_int
   - debug:
-      var: "{{ tenantlist[tenant_idx_int] }}"
+      var: "{{ tenantlist[tenant_index|int].value }}"
 
