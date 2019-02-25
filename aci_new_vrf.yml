@@ -96,7 +96,7 @@
     delegate_to: localhost
     register: vrf_results
 
-  - name: "Query Tenant {{ selected_tenant }} VRFs"
+  - name: "Query VRFS for Tenant {{ selected_tenant }}"
     aci_vrf:
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
