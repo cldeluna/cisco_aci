@@ -89,7 +89,7 @@
     delegate_to: localhost
     register: vrf_results
 
-  - name: "Query Tenant {{ tenant_name }} VRFs"
+  - name: "Query Tenant {{ selected_tenant }} VRFs"
     aci_vrf:
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
@@ -102,10 +102,10 @@
 
   - debug:
       var: all_tenant_vrfs
-    verbosity: 1
+      verbosity: 1
 
   - set_fact:
-      vrflist: "{{ all_tenant_vrfs.current | map(attribute='fvTenant.children') }}"
+      vrflist: "{{ all_tenant_vrfs.current[0].fvTenant.children | map(attribute='fvCtx.name') }}"
 
   - name: VRFs returned in Query ==>
     debug:
