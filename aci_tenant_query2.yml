@@ -63,8 +63,11 @@
 
   tasks:
 
+  - set_fact:
+      tenant_idx_int: "{{tenant_index | int}}"
+
   - debug:
-      var: tenant_index
+      var: tenant_idx_int
   - debug:
-      var: tenantlist["{{tenant_index | int}}"]
+      var: "{{ tenantlist[tenant_idx_int] }}"
 
