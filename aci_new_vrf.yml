@@ -112,7 +112,7 @@
       verbosity: 1
 
   - set_fact:
-      vrflist: "{{ all_tenant_vrfs.current[0].fvTenant.children | map(attribute='fvCtx.attributes.name') }}"
+      vrflist: "{{ all_tenant_vrfs.current[0].fvTenant.children | map(attribute='fvCtx.attributes.name') | list }}"
 
   - name: VRFs returned in Query ==>
     debug:
