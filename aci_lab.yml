@@ -1,9 +1,14 @@
 ---
-- name: ACI Playbook
+###############################################################################
+# This playbook executes a basic Tenant query
+###############################################################################
+- name: ACI Tenant Query Playbook
   hosts: aci
   gather_facts: no
 
+
   tasks:
+
   - name: Query all tenants
     aci_tenant:
       host: sandboxapicdc.cisco.com

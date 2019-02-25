@@ -1,4 +1,9 @@
 ---
+###############################################################################
+# This interactive playbook queries for information and action and performs
+# the selection Tenant action against the DevNet Sandbox APIC
+###############################################################################
+
 - name: ACI Playbook to Perform User Prompted Action on Tenant
   hosts: aci
   gather_facts: no
@@ -8,22 +13,26 @@
     aci_pwd: ciscopsdt
     aci_host: sandboxapicdc.cisco.com
 
+# Prompt for the Tenant Name and Tenant action
   vars_prompt:
     - name: "tenant_name"
-      prompt: "Enter Tenant Name:"
+      prompt: "Enter Tenant Name"
       default: "LAX_Tenant"
       private: no
 
     - name: "tenant_state"
-      prompt: "Enter Tenant State (absent | present | query:"
+      prompt: "Enter Tenant State (absent | present | query)"
       default: "query"
       private: no
 
+
   tasks:
 
+# setting a variable with the current date and time to use for the object description
   - name: Set Date
     set_fact: curr_date="{{lookup('pipe','date \"+%Y-%m-%d %H:%M\"')}}"
 
+# Note that the aci_tenant module (and ACI) is idempotent so "add" is actually "add if needed" as is delete
   - name: "Add, Delete, or Query Tenant {{ tenant_name }}"
     aci_tenant:
       host: "{{ aci_host }}"

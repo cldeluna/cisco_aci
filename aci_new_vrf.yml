@@ -1,7 +1,16 @@
 ---
+###############################################################################
+# This playbook executes CRUD Actions against the Selected Tenant VRF
+# The first set of tasks set facts including which Tenant to act upon in ACI
+# The second set of tasks performs the selected VRF action within the Tenant
+# and performs a vrf query against the selected Tenant to confirm action
+# EXECUTION:
+# ansible-playbook -i hosts aci_new_vrf.yml
+###############################################################################
 - name: ACI Tenant Selection and VRF CRUD Playbook
   hosts: aci
   gather_facts: no
+
 
   tasks:
 
@@ -22,7 +31,6 @@
     delegate_to: localhost
     register: all_tenants
 
-
   - set_fact:
       tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
 
@@ -30,6 +38,7 @@
     debug:
       var: tenantlist
 
+# Display a list of Tenants with an Index Value for selection
   - name: Select Tenant for VRF Action
     debug:
       msg: "Item Index {{ index }} - {{ item }}"
@@ -49,8 +58,6 @@
 
     - name: "tenant_index"
       prompt: "Enter Tenant Index (corresponding to Tenant)"
-
-
       private: no
 
     - name: "vrf_name"
@@ -105,7 +112,7 @@
       verbosity: 1
 
   - set_fact:
-      vrflist: "{{ all_tenant_vrfs.current[0].fvTenant.children | map(attribute='fvCtx.name') }}"
+      vrflist: "{{ all_tenant_vrfs.current[0].fvTenant.children | map(attribute='fvCtx.attributes.name') }}"
 
   - name: VRFs returned in Query ==>
     debug:
