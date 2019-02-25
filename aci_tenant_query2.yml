@@ -48,7 +48,7 @@
   vars_prompt:
 
     - name: "tenant_index"
-      prompt: "Enter Tenant Index (corresponding to Tenant):"
+      prompt: "Enter Tenant Index (corresponding to Tenant)"
       private: no
 
     - name: "vrf_name"
@@ -56,7 +56,7 @@
       private: no
 
     - name: "vrf_state"
-      prompt: "Enter Tenant State (absent | present | query):"
+      prompt: "Enter Tenant State (absent | present | query)"
       default: "query"
       private: no
 
@@ -66,5 +66,5 @@
   - debug:
       var: tenant_index
   - debug:
-      var: tenantlist["{{tenant_index}}"]
+      var: tenantlist["{{tenant_index | int}}"]
 
