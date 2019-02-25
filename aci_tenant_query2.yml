@@ -64,7 +64,7 @@
   tasks:
 
   - set_fact:
-      tenant_nm: "{{ tenantlist[tenant_index|int].value }}"
+      tenant_nm: "{{ tenantlist[tenant_index|int] }}"
 
 
   - debug:
