@@ -41,7 +41,7 @@
 # Display a list of Tenants with an Index Value for selection
   - name: Select Tenant for VRF Action
     debug:
-      msg: "Item Index {{ index }} - {{ item }}"
+      msg: "Tenant Index {{ index }} - {{ item }}"
     loop: "{{ tenantlist }}"
     loop_control:
       index_var: index
