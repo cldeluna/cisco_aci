@@ -29,15 +29,15 @@
   - local_action: copy content="{{ tenantlist | to_nice_yaml }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.yml"
   - local_action: copy content="{{ tenantlist | to_nice_json }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.json"
 
-#  - name: Generate Tenante Report
-#    template:
-#      src: ./templates/aci_tenant_report_template.j2
-#      dest: ./logs/{{ inventory_hostname }}-Tenant-Report.txt
-#      force: yes
-
   - name: Tenants returned in Query ==>
     debug:
       var: tenantlist
+
+  - name: Generate Tenante Report
+    template:
+      src: ./templates/aci_tenant_report_template.j2
+      dest: ./logs/{{ inventory_hostname }}-Tenant-Report.txt
+      force: yes
 
 
   - name: with_indexed_items -> loop
