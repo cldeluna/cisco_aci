@@ -23,6 +23,9 @@
     delegate_to: localhost
     register: all_tenants
 
+    template: src=./templates/aci_tenant_report_template.j2
+                dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
+
 
   - set_fact:
       tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
@@ -47,10 +50,10 @@
 #  hosts: aci
 #  gather_facts: no
 
-
-  - name: Generate Tenant Report
-    template: src=./templates/aci_tenant_report_template.j2
-                dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
+#
+#  - name: Generate Tenant Report
+#    template: src=./templates/aci_tenant_report_template.j2
+#                dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
 #    with_items:
 #      - "{{ tenantlist }}"
 
