@@ -23,6 +23,10 @@
     delegate_to: localhost
     register: all_tenants
 
+  - template:
+      src: ./templates/aci_tenant_report_template.j2
+      dest: ./logs/{{ inventory_hostname }}-Tenant-Report.txt
+      force: yes
 
   - set_fact:
       tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
@@ -42,10 +46,7 @@
     loop_control:
       index_var: index
 
-  - template:
-      src=./templates/aci_tenant_report_template.j2
-      dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
-      force = yes
+
 
 #  - template: src=./templates/aci_tenant_report_template.j2
 #              dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
