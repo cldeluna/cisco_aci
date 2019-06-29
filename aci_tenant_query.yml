@@ -30,8 +30,8 @@
   - local_action: copy content="{{ tenantlist | to_nice_yaml }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.yml"
   - local_action: copy content="{{ tenantlist | to_nice_json }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.json"
 
-  - template: src=./templates/aci_tenant_report_template.j2
-              dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
+#  - template: src=./templates/aci_tenant_report_template.j2
+#              dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
 
   - name: Tenants returned in Query ==>
     debug:
