@@ -23,15 +23,15 @@
     delegate_to: localhost
     register: all_tenants
 
-    template: src=./templates/aci_tenant_report_template.j2
-                dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
-
 
   - set_fact:
       tenantlist: "{{ all_tenants.current | map(attribute='fvTenant.attributes.name') | list }}"
 
   - local_action: copy content="{{ tenantlist | to_nice_yaml }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.yml"
   - local_action: copy content="{{ tenantlist | to_nice_json }}" dest="./host_vars/{{ inventory_hostname }}-fvTenant.json"
+
+  - template: src=./templates/aci_tenant_report_template.j2
+              dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
 
   - name: Tenants returned in Query ==>
     debug:
@@ -45,20 +45,8 @@
     loop_control:
       index_var: index
 
-#
-#- name: ACI VRF
-#  hosts: aci
-#  gather_facts: no
-
-#
-#  - name: Generate Tenant Report
-#    template: src=./templates/aci_tenant_report_template.j2
-#                dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
+#  - template: src=./templates/aci_tenant_report_template.j2
+#              dest=./logs/{{ inventory_hostname }}-Tenant-Report.txt
 #    with_items:
 #      - "{{ tenantlist }}"
-
-
-#  tasks:
-#  - debug:
-#      var: tenantlist
 
