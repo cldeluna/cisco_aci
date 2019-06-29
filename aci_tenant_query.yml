@@ -55,7 +55,7 @@
       - "{{ tenantlist }}"
 
 
-  tasks:
-  - debug:
-      var: tenantlist
+#  tasks:
+#  - debug:
+#      var: tenantlist
 
