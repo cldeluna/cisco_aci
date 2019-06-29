@@ -33,11 +33,12 @@
     debug:
       var: tenantlist
 
-  - name: Generate Tenante Report
+  - name: Generate Tenant Report
     template:
       src: ./templates/aci_tenant_report_template.j2
       dest: ./logs/{{ inventory_hostname }}-Tenant-Report.txt
-      force: yes
+      delegate_to: localhost
+      run_once: true
 
 
   - name: with_indexed_items -> loop
