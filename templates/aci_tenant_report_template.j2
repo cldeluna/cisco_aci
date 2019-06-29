@@ -1,0 +1,13 @@
+!## ACI Fabric Tenant Report for {{ inventory_hostname }}
+
+
+
+{#
+{% for res in item.results %}
+
+!## Executing command: {{ res.item }}
+{% if res.stdout is defined %}
+  {{ res.stdout.0 }}
+{% endif  %}
+{% endfor  %}
+#}

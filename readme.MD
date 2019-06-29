@@ -22,7 +22,7 @@ REF: [Ansible Network Module Index](https://docs.ansible.com/ansible/latest/modu
  - aci\_tenant_query.yml  
     -- Test Playbook
  - aci\_tenant_query2.yml  
-    -- Test Playbook
+    -- Test Playbook for tenant interactivce input
  - all\_host_vars.yml  
  	-- Sample Playbook to display all variables for a host defined in the playbook namespace
 
