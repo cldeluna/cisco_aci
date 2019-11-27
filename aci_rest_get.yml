@@ -22,7 +22,6 @@
       method: get
       output_level: normal
       path: /api/node/class/fvTenant.json
-      src: /home/cisco/ansible/aci/configs/aci_config.xml
     delegate_to: localhost
     register: query_result
 
