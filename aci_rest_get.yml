@@ -1,0 +1,28 @@
+---
+###############################################################################
+# This playbook executes a GET action on an APIC Controller via the Ansible ACI Rest Module
+###############################################################################
+- name: ACI Tenant GET Playbook
+  hosts: aci
+  gather_facts: no
+
+
+  tasks:
+
+  - name: Query
+    aci_rest:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      method: get
+      output_level: normal
+      path: /api/node/class/fvTenant.json
+      src: /home/cisco/ansible/aci/configs/aci_config.xml
+    delegate_to: localhost
+    register: query_result
+
+
+  - debug:
+      var: uery_result
+
