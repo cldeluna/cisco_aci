@@ -22,7 +22,7 @@
       method: get
       output_level: normal
       # path: /api/node/class/fvTenant.json
-      path: /api/node/mo/uni/infra/attentp-default.json?query-target=self
+      path: /api/node/mo/uni/infra/attentp-AEP_NAME.json?query-target=self
       # path: /api/node/mo/uni/infra/attentp-default-aep/fltCnts.json?subscription=yes
       # path: /api/node/mo/uni/infra.json?query-target=children&target-subtree-class=infraAttEntityP
     delegate_to: localhost
