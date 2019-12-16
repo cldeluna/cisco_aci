@@ -9,5 +9,9 @@ int_blacklist:
     node: 101
     interface: 1/5
     blacklist: no
+  - pod: 1
+    node: 102
+    interface: 1/2
+    blacklist: yes
 
 change_ticket: TEST123
