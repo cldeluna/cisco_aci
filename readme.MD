@@ -37,7 +37,7 @@ Note: These are "works in progress"!
  - all\_host_vars.yml  
 	 	-- Sample Playbook to display all variables for a host defined in the playbook namespace
  - port_blacklist.yml 
-	 	-- Sample Playbook which takes a payload data YAML file (group\_vars/port_blacklist.yml), builds the required payload to disable (blacklist) or enable interfaces using a Jinja2 template (templates/int\_enable\_disable.j2) and pushes that payload to the APIC.
+	 	-- Sample Playbook which takes a payload data YAML file (group\_vars/port_blacklist_payload_data.yml), builds the required payload to disable (blacklist) or enable interfaces using a Jinja2 template (templates/int\_enable\_disable.j2) and pushes that payload to the APIC.
 
 
 ```
@@ -55,7 +55,7 @@ Note: These are "works in progress"!
 ├── ansible.cfg
 ├── group_vars
 │   ├── creds.yml
-│   └── port_blacklist.yml
+│   └── port_blacklist_payload_data.yml
 ├── host_vars
 │   └── host_var_directory
 ├── hosts
