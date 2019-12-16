@@ -1,0 +1,35 @@
+{#
+# {{ change_ticket }}
+
+{{ int_blacklist }}
+#}
+
+
+{%  for item in blacklist  %}
+
+{%  if item.blacklist  %}
+
+{
+  "fabricRsOosPath": {
+    "attributes": {
+      "tDn": "topology/pod-{{ item.pod }}/paths-101/pathep-[eth1/1]",
+      "lc": "blacklist"
+    },
+    "children": []
+  }
+}
+
+{% else %}
+
+{
+  "fabricRsOosPath": {
+    "attributes": {
+      "dn": "uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-101/pathep-[eth1/1]]",
+      "status": "deleted"
+    },
+    "children": []
+  }
+}
+
+{%  endif  %}
+{%  endfor  %}

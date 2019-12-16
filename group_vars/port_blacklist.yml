@@ -1,0 +1,13 @@
+# Interface Black list
+
+int_blacklist:
+  - pod: 1
+    node:
+    interface: 1/6
+    blacklist: yes
+  - pod: 1
+    node:
+    interface: 1/5
+    blacklist: no
+
+change_ticket: TEST123

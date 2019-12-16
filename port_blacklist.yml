@@ -1,0 +1,47 @@
+---
+###############################################################################
+# This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
+###############################################################################
+- name: ACI Tenant Query Playbook
+  hosts: aci
+  gather_facts: no
+
+  vars:
+    aci_user: admin
+    aci_pwd: ciscopsdt
+    aci_host: sandboxapicdc.cisco.com
+
+  tasks:
+#    - name: Get Vault Variables
+#      include_vars: ./group_vars/creds.yml
+    - name: Get Port Blacklist Payload Data
+      include_vars: ./group_vars/port_blacklist.yml
+      register: output
+    - debug: var=output
+
+#  - name: Add a tenant using certificate authentication
+#    aci_rest:
+#      host: "{{ aci_host }}"
+#      username: "{{ aci_user }}"
+#      password: "{{ aci_pwd }}"
+#      validate_certs: no
+#      method: post
+#      path: /api/mo/uni.json
+#      src: /home/cisco/ansible/aci/configs/aci_config.xml
+#    delegate_to: localhost
+
+
+  - name: Create Port Blacklist Payload
+    template:
+      src: "./templates/int_enable_disable.j2"
+      dest: "./payload/{{ change_ticket }}-port-blacklist.json"
+
+  - name: Configure contracts
+    aci_rest:
+      hostname: '{{ inventory_hostname }}'
+      username: '{{ aci_username }}'
+      password: '{{ aci_password }}'
+      method: post
+      path: /api/node/mo/uni/fabric/outofsvc.json
+      src: "./payload/{{ change_ticket }}-port-blacklist.json"
+    delegate_to: localhost
