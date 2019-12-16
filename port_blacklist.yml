@@ -5,7 +5,8 @@
 #  The playbookd reads in a YAML file of payload data
 #  Renders the payload based on that payload data using the templates/int_enable_disable.j2
 #  Jinja template
-#  It then uses the Ansible ACI Rest Module to push that payload
+#  It then uses the Ansible ACI Rest Module to push that payload, displays the POST reponse and
+#  a summary message indicating success of failure.
 #
 #
 # EXECUTION:

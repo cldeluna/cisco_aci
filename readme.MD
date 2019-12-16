@@ -19,12 +19,18 @@ REF: [Ansible Network Module Index](https://docs.ansible.com/ansible/latest/modu
     -- Playbook which queries Tenants and allows user to select the specific Tenant which requires a VRF action (add state=present, remove state=absent, or query (default), performs requested action and queries specified tenant for list of VRfs
     
 ##### Miscellaneous and Supporting Playbooks ######
+
+Note: These are "works in progress"!
+
  - aci\_tenant_query.yml  
     -- Test Playbook
  - aci\_tenant_query2.yml  
     -- Test Playbook for tenant interactivce input
  - all\_host_vars.yml  
  	-- Sample Playbook to display all variables for a host defined in the playbook namespace
+ - port_blacklist.yml 
+ 	-- Sample Playbook which takes a payload data YAML file (group\_vars/port_blacklist.yml), builds the required payload to disable (blacklist) or enable interfaces using a Jinja2 template (templates/int\_enable\_disable.j2) and pushes that payload to the APIC.
+
 
 ```
 root@0bd4731cb725:/ansible/cisco_aci# git pull
