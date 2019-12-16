@@ -33,32 +33,38 @@ Note: These are "works in progress"!
 
 
 ```
-root@0bd4731cb725:/ansible/cisco_aci# git pull
-Already up-to-date.
-root@0bd4731cb725:/ansible/cisco_aci# tree
+(aci_build) Claudias-iMac:cisco_aci claudia$ tree
 .
-|-- aci_lab.yml
-|-- aci_new_vrf.yml
-|-- aci_tenant_prompt.yml
-|-- aci_tenant_query.yml
-|-- aci_tenant_query2.yml
-|-- all_host_vars.yml
-|-- ansible.cfg
-|-- ansible.log
-|-- group_vars
-|   `-- creds.yml
-|-- host_vars
-|   |-- host_var_directory
-|   |-- sandboxapicdc.cisco.com-fvTenant.json
-|   |-- sandboxapicdc.cisco.com-fvTenant.yml
-|   `-- test.yml
-|-- hosts
-|-- logs
-|   `-- output_directory
-`-- readme.MD
+├── YAML-Payload
+├── aci_lab.yml
+├── aci_new_vrf.yml
+├── aci_rest.yml
+├── aci_rest_get.yml
+├── aci_tenant_prompt.yml
+├── aci_tenant_query.yml
+├── aci_tenant_query2.yml
+├── all_host_vars.yml
+├── ansible.cfg
+├── group_vars
+│   ├── creds.yml
+│   └── port_blacklist.yml
+├── host_vars
+│   └── host_var_directory
+├── hosts
+├── logs
+│   └── output_directory
+├── payload
+│   └── TEST123-port-blacklist.json
+├── port-switch-inspector\ output.log
+├── port_blacklist.yml
+├── readme.MD
+└── templates
+    ├── aci_tenant_report_template.j2
+    └── int_enable_disable.j2
 
-3 directories, 16 files
-root@0bd4731cb725:/ansible/cisco_aci#
+5 directories, 21 files
+(aci_build) Claudias-iMac:cisco_aci claudia$ 
+
 
 ```
 
