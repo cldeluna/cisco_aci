@@ -3,16 +3,24 @@
 
 The playbooks contained within this repository are examples only.  They are intended to illustrate some basic functions against an ACI Fabric utilizing the ACI Ansible Core modules.
 
+To quickly test, I have some purpose built Docker images that are useful for quick tests.
+
+As usual, many of these public playbooks use the [DevNet](https://developer.cisco.com/) Always On Sandbox devices so you don't even need a lab!
+
+[Ansible Server in Docker for Network Engineers](https://gratuitous-arp.net/ansible-server-in-docker-for-network-engineers/)
+
 These playbook use the following ACI Modules:
 - [aci_tenant – Manage tenants (fv:Tenant)](https://docs.ansible.com/ansible/latest/modules/aci_tenant_module.html#aci-tenant-module)
 - [aci_vrf – Manage contexts or VRFs (fv:Ctx)](https://docs.ansible.com/ansible/latest/modules/aci_vrf_module.html#aci-vrf-module)
+- [aci_rest – Direct access to the Cisco APIC REST API](https://docs.ansible.com/ansible/latest/modules/aci_rest_module.html)
+
 
 REF: [Ansible Network Module Index](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html)
 
 
 ##### Main Playbooks ######
  - aci\_lab.yml      
- 	-- Basic starter Playbook to Query Tenants in an ACI Fabric
+	 	-- Basic starter Playbook to Query Tenants in an ACI Fabric
  - aci\_tenant_prompt.yml  
     -- Basic Playbook which prompts for tenant name and action and then displays all tenants in the ACI Fabric
  - aci\_new_vrf.yml  
@@ -27,9 +35,9 @@ Note: These are "works in progress"!
  - aci\_tenant_query2.yml  
     -- Test Playbook for tenant interactivce input
  - all\_host_vars.yml  
- 	-- Sample Playbook to display all variables for a host defined in the playbook namespace
+	 	-- Sample Playbook to display all variables for a host defined in the playbook namespace
  - port_blacklist.yml 
- 	-- Sample Playbook which takes a payload data YAML file (group\_vars/port_blacklist.yml), builds the required payload to disable (blacklist) or enable interfaces using a Jinja2 template (templates/int\_enable\_disable.j2) and pushes that payload to the APIC.
+	 	-- Sample Playbook which takes a payload data YAML file (group\_vars/port_blacklist.yml), builds the required payload to disable (blacklist) or enable interfaces using a Jinja2 template (templates/int\_enable\_disable.j2) and pushes that payload to the APIC.
 
 
 ```
