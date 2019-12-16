@@ -10,7 +10,7 @@
 #
 #
 # EXECUTION:
-# ansible-playbook -i hosts port_blacklist.yml
+# ansible-playbook -i hosts port_blacklist_payload_data.yml
 ###############################################################################
 
 - name: ACI Port Blacklist Playbook
@@ -24,7 +24,7 @@
 
   tasks:
     - name: Get Port Blacklist Payload Data
-      include_vars: ./group_vars/port_blacklist.yml
+      include_vars: ./group_vars/port_blacklist_payload_data.yml
       register: output
 
     - name: Display Included Payload
