@@ -3,7 +3,7 @@
 
 The playbooks contained within this repository are examples only.  They are intended to illustrate some basic functions against an ACI Fabric utilizing the ACI Ansible Core modules.
 
-To quickly test, I have some purpose built Docker images that are useful for quick tests.
+To get started right away, I have some purpose built Docker images that are useful for quick tests.
 
 As usual, many of these public playbooks use the [DevNet](https://developer.cisco.com/) Always On Sandbox devices so you don't even need a lab!
 
