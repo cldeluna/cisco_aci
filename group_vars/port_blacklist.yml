@@ -3,8 +3,8 @@
 int_blacklist:
   - pod: 1
     node: 101
-    interface: 1/6
-    blacklist: yes
+    interface: 1/2
+    blacklist: no
   - pod: 1
     node: 101
     interface: 1/5
@@ -12,6 +12,10 @@ int_blacklist:
   - pod: 1
     node: 102
     interface: 1/2
+    blacklist: yes
+  - pod: 1
+    node: 102
+    interface: 1/5
     blacklist: yes
 
 change_ticket: TEST123
