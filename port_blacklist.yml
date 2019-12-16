@@ -46,6 +46,11 @@
         src: "./payload/{{ change_ticket }}-port-blacklist.json"
       delegate_to: localhost
       register: output
+      set_fact:
+        play_status: "{{ 'Play was successful!' if not output.failed  else 'Play failed! Please review POST Results' }}"
 
     - name: Display POST Results
       debug: var=output
+
+    - name: Display POST Summayr
+      debug: msg:  {{ play_status }

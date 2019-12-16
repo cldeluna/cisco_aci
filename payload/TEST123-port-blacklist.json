@@ -1,0 +1,19 @@
+
+
+  "fabricRsOosPath": {
+    "attributes": {
+      "tDn": "topology/pod-1/paths-101/pathep-[eth1/6]",
+      "lc": "blacklist"
+    },
+    "children": []
+  }
+
+
+
+  "fabricRsOosPath": {
+    "attributes": {
+      "dn": "uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-101/pathep-[eth1/5]]",
+      "status": "deleted"
+    },
+    "children": []
+  }
