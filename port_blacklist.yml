@@ -2,6 +2,7 @@
 ###############################################################################
 # This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
 ###############################################################################
+
 - name: ACI Port Blacklist Playbook
   hosts: aci
   gather_facts: no
@@ -12,13 +13,12 @@
     aci_host: sandboxapicdc.cisco.com
 
   tasks:
-#    - name: Get Vault Variables
-#      include_vars: ./group_vars/creds.yml
     - name: Get Port Blacklist Payload Data
       include_vars: ./group_vars/port_blacklist.yml
       register: output
 
-    - debug: var=output
+    - name: Display Included Payload
+      debug: var=output
 
     - name: Create Port Blacklist Payload
       template:

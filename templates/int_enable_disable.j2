@@ -1,26 +1,23 @@
 {#
-# {{ change_ticket }}
+Uncomment if show the values of the variables
 
+{{ change_ticket }}
 {{ int_blacklist }}
-#}
 
+#}
 
 {%  for item in int_blacklist  %}
 
 {%  if item.blacklist  %}
-
-
   "fabricRsOosPath": {
     "attributes": {
-      "tDn": "topology/pod-{{ item.pod }}/paths-101/pathep-[eth1/1]",
+      "tDn": "topology/pod-{{ item.pod }}/paths-{{ item.node }}/pathep-[eth{{ item.int }}]",
       "lc": "blacklist"
     },
     "children": []
   }
 
-
 {% else %}
-
 
   "fabricRsOosPath": {
     "attributes": {
@@ -29,7 +26,5 @@
     },
     "children": []
   }
-
-
 {%  endif  %}
 {%  endfor  %}
