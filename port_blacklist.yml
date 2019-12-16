@@ -26,12 +26,12 @@
         dest: "./payload/{{ change_ticket }}-port-blacklist.json"
       delegate_to: localhost
 
-#    - name: Configure contracts
-#      aci_rest:
-#        hostname: '{{ aci_host }}'
-#        username: '{{ aci_username }}'
-#        password: '{{ aci_password }}'
-#        method: post
-#        path: /api/node/mo/uni/fabric/outofsvc.json
-#        src: "./payload/{{ change_ticket }}-port-blacklist.json"
-#      delegate_to: localhost
+    - name: POST Blacklist Payload to {{ aci_host }}
+      aci_rest:
+        hostname: '{{ aci_host }}'
+        username: '{{ aci_username }}'
+        password: '{{ aci_password }}'
+        method: post
+        path: /api/node/mo/uni/fabric/outofsvc.json
+        src: "./payload/{{ change_ticket }}-port-blacklist.json"
+      delegate_to: localhost
