@@ -53,4 +53,5 @@
       debug: var=output
 
     - name: Display POST Summayr
-      debug: msg:  {{ play_status }
+      debug:
+        msg={{ play_status }
