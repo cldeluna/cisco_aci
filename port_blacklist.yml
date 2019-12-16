@@ -35,7 +35,7 @@
         dest: "./payload/{{ change_ticket }}-port-blacklist.json"
       delegate_to: localhost
 
-    - name: "POST Blacklist Payload to {{ aci_host }}"
+    - name: POST Blacklist Payload to {{ aci_host }}
       aci_rest:
         hostname: '{{ aci_host }}'
         username: '{{ aci_user }}'
@@ -46,7 +46,8 @@
         src: "./payload/{{ change_ticket }}-port-blacklist.json"
       delegate_to: localhost
       register: output
-      set_fact:
+
+    - set_fact:
         play_status: "{{ 'Play was successful!' if not output.failed  else 'Play failed! Please review POST Results' }}"
 
     - name: Display POST Results
