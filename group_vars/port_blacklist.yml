@@ -2,11 +2,11 @@
 
 int_blacklist:
   - pod: 1
-    node:
+    node: 101
     interface: 1/6
     blacklist: yes
   - pod: 1
-    node:
+    node: 101
     interface: 1/5
     blacklist: no
 
