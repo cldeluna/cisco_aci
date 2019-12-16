@@ -9,7 +9,7 @@
 
 {%  if item.blacklist  %}
 
-{
+
   "fabricRsOosPath": {
     "attributes": {
       "tDn": "topology/pod-{{ item.pod }}/paths-101/pathep-[eth1/1]",
@@ -17,11 +17,11 @@
     },
     "children": []
   }
-}
+
 
 {% else %}
 
-{
+
   "fabricRsOosPath": {
     "attributes": {
       "dn": "uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-101/pathep-[eth1/1]]",
@@ -29,7 +29,7 @@
     },
     "children": []
   }
-}
+
 
 {%  endif  %}
 {%  endfor  %}
