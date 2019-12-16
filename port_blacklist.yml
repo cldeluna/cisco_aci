@@ -53,6 +53,6 @@
     - name: Display POST Results
       debug: var=output
 
-    - name: Display POST Summayr
+    - name: Display POST Summary
       debug:
-        msg={{ play_status }
+        msg={{ play_status }}
