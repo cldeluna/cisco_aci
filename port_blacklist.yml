@@ -1,6 +1,15 @@
 ---
 ###############################################################################
 # This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
+#
+#  The playbookd reads in a YAML file of payload data
+#  Renders the payload based on that payload data using the templates/int_enable_disable.j2
+#  Jinja template
+#  It then uses the Ansible ACI Rest Module to push that payload
+#
+#
+# EXECUTION:
+# ansible-playbook -i hosts port_blacklist.yml
 ###############################################################################
 
 - name: ACI Port Blacklist Playbook
@@ -36,3 +45,7 @@
         path: /api/node/mo/uni/fabric/outofsvc.json
         src: "./payload/{{ change_ticket }}-port-blacklist.json"
       delegate_to: localhost
+      register: output
+
+    - name: Display POST Results
+      debug: var=output
