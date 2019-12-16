@@ -11,7 +11,7 @@ Uncomment if show the values of the variables
 {%  if item.blacklist  %}
   "fabricRsOosPath": {
     "attributes": {
-      "tDn": "topology/pod-{{ item.pod }}/paths-{{ item.node }}/pathep-[eth{{ item.int }}]",
+      "tDn": "topology/pod-{{ item.pod }}/paths-{{ item.node }}/pathep-[eth{{ item.interface }}]",
       "lc": "blacklist"
     },
     "children": []
@@ -21,7 +21,7 @@ Uncomment if show the values of the variables
 
   "fabricRsOosPath": {
     "attributes": {
-      "dn": "uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-101/pathep-[eth1/1]]",
+      "dn": "uni/fabric/outofsvc/rsoosPath-[topology/pod-{{ item.pod }}/paths-{{ item.node }}/pathep-[eth{{ item.interface }}]]",
       "status": "deleted"
     },
     "children": []
