@@ -24,6 +24,7 @@
       template:
         src: "./templates/int_enable_disable.j2"
         dest: "./payload/{{ change_ticket }}-port-blacklist.json"
+      delegate_to: localhost
 
 #    - name: Configure contracts
 #      aci_rest:
