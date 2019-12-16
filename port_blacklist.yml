@@ -31,6 +31,7 @@
         hostname: '{{ aci_host }}'
         username: '{{ aci_user }}'
         password: '{{ aci_pwd }}'
+        validate_certs: no
         method: post
         path: /api/node/mo/uni/fabric/outofsvc.json
         src: "./payload/{{ change_ticket }}-port-blacklist.json"
