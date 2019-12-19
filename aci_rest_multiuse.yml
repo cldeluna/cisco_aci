@@ -27,8 +27,8 @@
 #      include_vars: ./group_vars/multiuse_payload_data.yml
 #      register: output
 
-    - name: Display Included Payload
-      debug: var=output
+#    - name: Display Included Payload
+#      debug: var=output
 
 #    - name: Create Port Blacklist Payload
 #      template:
