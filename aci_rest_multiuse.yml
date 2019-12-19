@@ -66,7 +66,6 @@
                       "dn": "uni/rbacdb/irule-[uni/grp-Test]-dom-ODP-SEC",
                       "domain": "ODP-SEC",
                       "lcOwn": "local",
-                      "modTs": "2019-12-18T19:19:59.373",
                       "name": "",
                       "nameAlias": "",
                       "objectDn": "uni/grp-Test",
