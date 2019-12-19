@@ -1,0 +1,88 @@
+---
+###############################################################################
+# This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
+#
+#  The playbookd reads in a YAML file of payload data
+#  Renders the payload based on that payload data using the templates/int_enable_disable.j2
+#  Jinja template
+#  It then uses the Ansible ACI Rest Module to push that payload, displays the POST reponse and
+#  a summary message indicating success of failure.
+#
+#
+# EXECUTION:
+# ansible-playbook -i hosts port_blacklist_payload_data.yml
+###############################################################################
+
+- name: ACI REST Multi Use - Multi Purpose
+  hosts: aci
+  gather_facts: no
+
+  vars:
+    aci_user: admin
+    aci_pwd: ciscopsdt
+    aci_host: sandboxapicdc.cisco.com
+
+  tasks:
+#    - name: Get Port Blacklist Payload Data
+#      include_vars: ./group_vars/multiuse_payload_data.yml
+#      register: output
+
+    - name: Display Included Payload
+      debug: var=output
+
+#    - name: Create Port Blacklist Payload
+#      template:
+#        src: "./templates/int_enable_disable.j2"
+#        dest: "./payload/{{ change_ticket }}-port-blacklist.json"
+#      delegate_to: localhost
+
+#    - name: POST Blacklist Payload to {{ aci_host }}
+#      aci_rest:
+#        hostname: '{{ aci_host }}'
+#        username: '{{ aci_user }}'
+#        password: '{{ aci_pwd }}'
+#        validate_certs: no
+#        method: post
+#        path: /api/node/mo/uni/fabric/outofsvc.json
+#        src: "./payload/{{ change_ticket }}-port-blacklist.json"
+#      delegate_to: localhost
+#      register: output
+
+
+    - name: MultiUse
+      aci_rest:
+        hostname: '{{ aci_host }}'
+        username: '{{ aci_user }}'
+        password: '{{ aci_pwd }}'
+        validate_certs: no
+        path: /api/node/mo/uni/rbacdb/irule-[uni/grp-Test]-dom-ODP-SEC.json
+        method: post
+        content: |
+          {
+              "aaaIRbacRule": {
+                  "attributes": {
+                      "childAction": "deleteNonPresent",
+                      "descr": "",
+                      "dn": "uni/rbacdb/irule-[uni/grp-Test]-dom-ODP-SEC",
+                      "domain": "ODP-SEC",
+                      "lcOwn": "local",
+                      "modTs": "2019-12-18T19:19:59.373",
+                      "name": "",
+                      "nameAlias": "",
+                      "objectDn": "uni/grp-Test",
+                      "status": "deleted"
+                  }
+              }
+          }
+      delegate_to: localhost
+
+
+    - set_fact:
+        play_status: "{{ 'Play was successful!' if not output.failed  else 'Play failed! Please review POST Results' }}"
+
+    - name: Display POST Results
+      debug: var=output
+
+    - name: Display POST Summary
+      debug:
+        msg={{ play_status }}
