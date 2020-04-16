@@ -1,0 +1,94 @@
+---
+###############################################################################
+# This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
+###############################################################################
+- name: ACI Backup Export Playbook
+  hosts: aci
+  gather_facts: no
+
+  vars:
+    aci_user: admin
+    aci_pwd: ciscopsdt
+    aci_host: sandboxapicdc.cisco.com
+    rem_name: Prod_SCP_Server_1.1.1.1
+    scp_user: aci_backup
+    scp_pwd: Cisco123
+    scp_ip: 1.1.1.1
+    exp_name: Backup Export Policy for SCP
+
+
+  tasks:
+
+  - name: Create a Remote Location
+    aci_rest:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      method: post
+      content:
+        {
+          "fileRemotePath": {
+            "attributes": {
+              "dn": "uni/fabric/path-{{ rem_name }}",
+              "remotePort": 22,
+              "name": "{{ rem_name }}",
+              "descr": "Production SCP Server,
+              # Valid values = "ftp" "scp" "sftp"
+              "protocol": "scp",
+              "userName": "{{ scp_user }}",
+              "userPasswd": "{{ scp_pwd }}",
+              "host": "{{ scp_ip }}"
+              # "rn": "path-cdl-remote-loc",
+              # "status": "created"
+            },
+            "children": []
+          }
+        }
+    delegate_to: localhost
+
+
+
+  - name: Create an Export Policy
+    aci_rest:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      method: post
+      content:
+        {
+          "configExportP": {
+              "attributes": {
+                  "dn": "uni/fabric/configexp-{{ exp_name }}",
+                  "name": "{{ exp_name }}",
+                  "descr": "Export Policy for SCP",
+                  #Valid Values = "triggered" NOte: can't send  empty string
+                  "adminSt": "triggered",
+                  #Valid Values = "xml" "json"
+                   "format": "json",
+                  #"rn": "configexp-CDL_export-pol",
+                  #"status": "created"
+              },
+              "children": [{
+                  "configRsExportScheduler": {
+                      "attributes": {
+                          #Valid Values = "EveryEightHours" "ConstSchedP" "ConstCatSchedP" Any existing name
+                          "tnTrigSchedPName": "EveryEightHours",
+                          "status": "created,modified"
+                      },
+                      "children": []
+                  }
+              },
+              {
+                  "configRsRemotePath": {
+                      "attributes": {
+                          # Valid Values = Any existing name
+                          "tnFileRemotePathName": "{{ rem_name }}"
+                          "status": "created,modified"
+                      },
+                      "children": []
+                  }
+              }]
+          }
+        }
