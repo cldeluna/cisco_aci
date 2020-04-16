@@ -34,13 +34,10 @@
               "remotePort": 22,
               "name": "{{ rem_name }}",
               "descr": "Production SCP Server,
-              # Valid values = "ftp" "scp" "sftp"
               "protocol": "scp",
               "userName": "{{ scp_user }}",
               "userPasswd": "{{ scp_pwd }}",
               "host": "{{ scp_ip }}"
-              # "rn": "path-cdl-remote-loc",
-              # "status": "created"
             },
             "children": []
           }
@@ -63,17 +60,12 @@
                   "dn": "uni/fabric/configexp-{{ exp_name }}",
                   "name": "{{ exp_name }}",
                   "descr": "Export Policy for SCP",
-                  #Valid Values = "triggered" NOte: can't send  empty string
                   "adminSt": "triggered",
-                  #Valid Values = "xml" "json"
                    "format": "json",
-                  #"rn": "configexp-CDL_export-pol",
-                  #"status": "created"
               },
               "children": [{
                   "configRsExportScheduler": {
                       "attributes": {
-                          #Valid Values = "EveryEightHours" "ConstSchedP" "ConstCatSchedP" Any existing name
                           "tnTrigSchedPName": "EveryEightHours",
                           "status": "created,modified"
                       },
@@ -83,7 +75,6 @@
               {
                   "configRsRemotePath": {
                       "attributes": {
-                          # Valid Values = Any existing name
                           "tnFileRemotePathName": "{{ rem_name }}"
                           "status": "created,modified"
                       },
