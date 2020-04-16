@@ -15,6 +15,7 @@
     scp_pwd: Cisco123
     scp_ip: 1.1.1.1
     exp_name: Backup_Export_Policy_for_SCP
+    status: "created,modified"
 
 
   tasks:
@@ -39,14 +40,14 @@
               "userName": "{{ scp_user }}",
               "userPasswd": "{{ scp_pwd }}",
               "host": "{{ scp_ip }}",
-              "status": "created,modified"
+              "status": "{{ status }}"
             },
             "children": [
               {
                 "fileRsARemoteHostToEpg": {
                   "attributes": {
                     "tDn": "uni/tn-mgmt/mgmtp-default/oob-default",
-                    "status": "created,modified"
+                    "status": "{{ status }}"
                   },
                   "children": []
                 }
@@ -75,7 +76,7 @@
                   "descr": "Export Policy for SCP",
                   "adminSt": "triggered",
                   "format": "json",
-                  "status": "created,modified"
+                  "status": "{{ status }}"
               },
               "children": [{
                   "configRsExportScheduler": {
