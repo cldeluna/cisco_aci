@@ -59,6 +59,27 @@
     delegate_to: localhost
 
 
+  - name: Enable Global AES Encryption Settings
+    aci_rest:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      method: post
+      path: "/api/node/mo/uni.json"
+      content:
+        {
+          "pkiExportEncryptionKey": {
+            "attributes": {
+              "dn": "uni/exportcryptkey",
+              "strongEncryptionEnabled": "true",
+              "passphrase": "Cisco123Cisco123"
+            },
+            "children": []
+          }
+        }
+    delegate_to: localhost
+
 
   - name: Create an Export Policy
     aci_rest:
