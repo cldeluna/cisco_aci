@@ -77,7 +77,7 @@
               {
                   "configRsRemotePath": {
                       "attributes": {
-                          "tnFileRemotePathName": "{{ rem_name }}"
+                          "tnFileRemotePathName": "{{ rem_name }}",
                           "status": "created,modified"
                       },
                       "children": []
