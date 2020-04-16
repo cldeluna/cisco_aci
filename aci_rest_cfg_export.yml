@@ -38,14 +38,15 @@
               "protocol": "scp",
               "userName": "{{ scp_user }}",
               "userPasswd": "{{ scp_pwd }}",
-              "host": "{{ scp_ip }}"
+              "host": "{{ scp_ip }}",
+              "status": "created,modified"
             },
             "children": [
               {
                 "fileRsARemoteHostToEpg": {
                   "attributes": {
                     "tDn": "uni/tn-mgmt/mgmtp-default/oob-default",
-                    "status": "created"
+                    "status": "created,modified"
                   },
                   "children": []
                 }
