@@ -14,7 +14,7 @@
     scp_user: aci_backup
     scp_pwd: Cisco123
     scp_ip: 1.1.1.1
-    exp_name: Backup Export Policy for SCP
+    exp_name: "Backup Export Policy for SCP"
 
 
   tasks:
@@ -74,7 +74,8 @@
                   "name": "{{ exp_name }}",
                   "descr": "Export Policy for SCP",
                   "adminSt": "triggered",
-                   "format": "json",
+                  "format": "json",
+                  "status": "created,modified"
               },
               "children": [{
                   "configRsExportScheduler": {
