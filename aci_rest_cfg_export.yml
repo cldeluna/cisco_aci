@@ -26,6 +26,7 @@
       password: "{{ aci_pwd }}"
       validate_certs: no
       method: post
+      path: "/api/node/mo/uni.json"
       content:
         {
           "fileRemotePath": {
@@ -33,7 +34,7 @@
               "dn": "uni/fabric/path-{{ rem_name }}",
               "remotePort": 22,
               "name": "{{ rem_name }}",
-              "descr": "Production SCP Server,
+              "descr": "Production SCP Server",
               "protocol": "scp",
               "userName": "{{ scp_user }}",
               "userPasswd": "{{ scp_pwd }}",
@@ -53,6 +54,7 @@
       password: "{{ aci_pwd }}"
       validate_certs: no
       method: post
+      path: "/api/node/mo/uni.json"
       content:
         {
           "configExportP": {
