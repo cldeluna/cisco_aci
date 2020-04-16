@@ -26,13 +26,13 @@
       password: "{{ aci_pwd }}"
       validate_certs: no
       method: post
-      path: "/api/node/mo/uni.json"
+      path: "/api/node/mo/fabric/uni.json"
       content:
         {
           "fileRemotePath": {
             "attributes": {
               "dn": "uni/fabric/path-{{ rem_name }}",
-              "remotePort": 22,
+              "remotePort": "22",
               "name": "{{ rem_name }}",
               "descr": "Production SCP Server",
               "protocol": "scp",
@@ -40,7 +40,17 @@
               "userPasswd": "{{ scp_pwd }}",
               "host": "{{ scp_ip }}"
             },
-            "children": []
+            "children": [
+              {
+                "fileRsARemoteHostToEpg": {
+                  "attributes": {
+                    "tDn": "uni/tn-mgmt/mgmtp-default/oob-default",
+                    "status": "created"
+                  },
+                  "children": []
+                }
+              }
+            ]
           }
         }
     delegate_to: localhost
