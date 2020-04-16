@@ -15,7 +15,7 @@
     scp_pwd: Cisco123
     scp_ip: 1.1.1.1
     exp_name: Backup_Export_Policy_for_SCP
-    status: "deleted"
+    status: "created,modified"
 
 
   tasks:
