@@ -37,6 +37,7 @@
               "name": "{{ rem_name }}",
               "descr": "Production SCP Server",
               "protocol": "scp",
+              "remotePath":"/",
               "userName": "{{ scp_user }}",
               "userPasswd": "{{ scp_pwd }}",
               "host": "{{ scp_ip }}",
