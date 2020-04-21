@@ -25,13 +25,8 @@
       method: "{{ method }}"
       path: "{{ query_path }}"
     delegate_to: localhost
+    register: query_result
 
 
-#  - name: create bridge domain json from template
-#    template:
-#      src: "../aci/templates/aci_bridge_domain_create.j2"
-#      dest: "../aci/configs/aci_bridge_domain_create.json"
-#
-#  - name: create bridge domain from posting json
-#    aci_rest: action=post uri=/api/node/mo/uni/tn-{{ tenant }}/BD-{{ bdname }}.json config_file=/home/schockc/ansible/aci/configs/aci_bridge_domain_create.json host={{ inventory_hostname }} username={{ user }} password="{{ creds['password'] }}"
-#    ignore_errors: true
+  - debug:
+      var: query_result
