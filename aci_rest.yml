@@ -11,6 +11,8 @@
     aci_user: admin
     aci_pwd: ciscopsdt
     aci_host: sandboxapicdc.cisco.com
+    query_src: '/api/node/mo/uni/infra/attentp-AEP_NAME.json?query-target=self'
+    method: 'post'
 
   tasks:
 
@@ -20,18 +22,17 @@
       username: "{{ aci_user }}"
       password: "{{ aci_pwd }}"
       validate_certs: no
-      method: post
+      method: "{{ method }}"
       path: /api/mo/uni.json
-      src: /home/cisco/ansible/aci/configs/aci_config.xml
+      src: "{{ query_src }}"
     delegate_to: localhost
 
 
-
-  - name: create bridge domain json from template
-    template:
-      src: "../aci/templates/aci_bridge_domain_create.j2"
-      dest: "../aci/configs/aci_bridge_domain_create.json"
-
-  - name: create bridge domain from posting json
-    aci_rest: action=post uri=/api/node/mo/uni/tn-{{ tenant }}/BD-{{ bdname }}.json config_file=/home/schockc/ansible/aci/configs/aci_bridge_domain_create.json host={{ inventory_hostname }} username={{ user }} password="{{ creds['password'] }}"
-    ignore_errors: true
+#  - name: create bridge domain json from template
+#    template:
+#      src: "../aci/templates/aci_bridge_domain_create.j2"
+#      dest: "../aci/configs/aci_bridge_domain_create.json"
+#
+#  - name: create bridge domain from posting json
+#    aci_rest: action=post uri=/api/node/mo/uni/tn-{{ tenant }}/BD-{{ bdname }}.json config_file=/home/schockc/ansible/aci/configs/aci_bridge_domain_create.json host={{ inventory_hostname }} username={{ user }} password="{{ creds['password'] }}"
+#    ignore_errors: true
