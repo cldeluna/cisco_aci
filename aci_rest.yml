@@ -34,5 +34,5 @@
   - name: Look for APICs which are not FULLY FIT
     debug:
       msg: "APIC: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
-    with: "{{ query_result['imdata'] }}"
+    with_items: "{{ query_result['imdata'] }}"
 #    when: ("'sid' in item.key" and "'stdout' in item.key")
