@@ -31,8 +31,20 @@
     debug:
       var: query_result
 
-  - name: Look for APICs which are not FULLY FIT
+  - name: Summary of APIC Health
     debug:
       msg: "APIC: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
     with_items: "{{ query_result['imdata'] }}"
 #    when: ("'sid' in item.key" and "'stdout' in item.key")
+
+  - name: Look for APICs which are NOT FULLY FIT
+    debug:
+      msg: "APIC NOT FULLY FIT: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
+    with_items: "{{ query_result['imdata'] }}"
+    when: item['infraWiNode']['attributes']['health']  != 'fully-fit'
+
+  - name: Look for APICs which ARE FULLY FIT
+    debug:
+      msg: "APIC FULLY FIT: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
+    with_items: "{{ query_result['imdata'] }}"
+    when: item['infraWiNode']['attributes']['health']  == 'fully-fit'
