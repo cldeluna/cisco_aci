@@ -1,0 +1,66 @@
+---
+###############################################################################
+# This playbook executes configuration snapshots using the Ansible
+# aci_config_snapshot module
+#
+#
+# EXECUTION:
+# ansible-playbook -i hosts aci_config_snapshot.yml
+###############################################################################
+- name: ACI Configuration Snapshot
+  hosts: aci
+  gather_facts: no
+
+
+  tasks:
+# Using set_facts rather than vars so that these variables are available across tasks
+  - set_fact:
+      aci_user: admin
+      aci_pwd: ciscopsdt
+      aci_host: sandboxapicdc.cisco.com
+
+  - name: Query Snapshots Before Creating a new Snapshot
+    aci_config_snapshot:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      state: query
+    delegate_to: localhost
+    register: query_result
+
+
+  - name: List Snapshots Before new snapshot creation
+    debug:
+      msg: "{{ item.configSnapshot.attributes.fileName }}"
+    with_items: "{{ query_result.current }}"
+
+  - name: Create a snapshot of ACI "{{ aci_host}}"
+    aci_config_snapshot:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      timeout: 90
+      state: present
+      export_policy: GDL_ConfigExportPolicy
+      include_secure: yes
+      max_count: 10
+      description: GDL_Fabric_Snapshot
+    delegate_to: localhost
+    register: aci_snapshot
+
+  - name: Query Snapshots After Creating a new Snapshot
+    aci_config_snapshot:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      state: query
+    delegate_to: localhost
+    register: query_result
+
+  - name: List Snapshots After new snapshot creation
+    debug:
+      msg: "{{ item.configSnapshot.attributes.fileName }}"
+    with_items: "{{ query_result.current }}"
