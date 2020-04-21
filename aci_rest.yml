@@ -27,6 +27,7 @@
     delegate_to: localhost
     register: query_result
 
-
-  - debug:
+  - name: Display RAW APIC Results
+    debug:
       var: query_result
+      verbosity: 1
