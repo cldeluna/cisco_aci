@@ -11,12 +11,12 @@
     aci_user: admin
     aci_pwd: ciscopsdt
     aci_host: sandboxapicdc.cisco.com
-    query_path: '/api/node/class/infraWiNode'
+    query_path: '/api/node/class/infraWiNode.json'
     method: 'get'
 
   tasks:
 
-  - name: "Execute REST Call Action: {{ method }} Query: {{ query_path }} "
+  - name: "Execute REST Call Action: {{ method | upper }} Query: {{ query_path }} "
     aci_rest:
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
