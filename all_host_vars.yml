@@ -6,25 +6,10 @@
   hosts: aci
   gather_facts: no
 
-  vars_files:
-    - "./host_vars/{{ inventory_host }}-fvTenant.yml"
-    - ./host_vars/test.yml
-
   vars:
     aci_user: admin
     aci_pwd: ciscopsdt
     aci_host: sandboxapicdc.cisco.com
-
-#  vars_prompt:
-#    - name: "vrf_name"
-#      prompt: "Enter Tenant Name:"
-#      default: "LAX_Tenant"
-#      private: no
-#
-#    - name: "vrf_state"
-#      prompt: "Enter Tenant State (absent | present | query:"
-#      default: "query"
-#      private: no
 
   tasks:
 
