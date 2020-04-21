@@ -11,8 +11,8 @@
     aci_user: admin
     aci_pwd: ciscopsdt
     aci_host: sandboxapicdc.cisco.com
-    query_src: '/api/node/mo/uni/infra/attentp-AEP_NAME.json?query-target=self'
-    method: 'post'
+    query_src: '/api/node/class/infraWiNode'
+    method: 'get'
 
   tasks:
 
