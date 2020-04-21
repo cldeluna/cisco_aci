@@ -31,11 +31,10 @@
     debug:
       var: query_result
 
-  - name: Summary of APIC Health
+  - name: Summary of APIC Cluster Health
     debug:
       msg: "APIC: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
     with_items: "{{ query_result['imdata'] }}"
-#    when: ("'sid' in item.key" and "'stdout' in item.key")
 
   - name: Look for APICs which are NOT FULLY FIT
     debug:
