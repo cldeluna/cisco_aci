@@ -1,6 +1,40 @@
-!## ACI Fabric Tenant Report for {{ inventory_hostname }}
+!## Summary report for IOS Device {{ inventory_hostname }}
+
+{{ output }}
+
+=== Summary Report for device {{ output.ansible_facts.ansible_net_hostname }} ==
+
+Device mode is {{ output.ansible_facts.ansible_net_model }}.
+
+Device serial number is {{ output.ansible_facts.ansible_net_serialnum }}.
+
+Device is running software version {{ output.ansible_facts.ansible_net_version }}.
+
+Device has the following IPs:
+{% for ip in output.ansible_facts.ansible_net_all_ipv4_addresses %}
+  - {{ ip }}
+{% endfor %}
+
+Device has the following Interfaces:
+{% for int, cfg_dict in output.ansible_facts.ansible_net_interfaces.items() %}
+  - {{ int }}
+{% if cfg_dict.description is defined %}
+{{  -- cfg_dict.description }}
+{% endif  %}
+{% endfor %}
 
 
+
+!## Executing command: {{ res.item }}
+{% if res.stdout is defined %}
+  {{ res.stdout.0 }}
+{% endif  %}
+{% endfor  %}
+
+
+
+
+{{ output.ansible_facts.ansible_net_hostname}}
 
 {#
 {% for res in item.results %}
