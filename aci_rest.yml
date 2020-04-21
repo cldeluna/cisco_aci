@@ -1,0 +1,32 @@
+---
+###############################################################################
+# This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
+###############################################################################
+- name: ACI Tenant Query Playbook
+  hosts: aci
+  gather_facts: no
+
+
+  tasks:
+
+  - name: Add a tenant using certificate authentication
+    aci_rest:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      validate_certs: no
+      method: post
+      path: /api/mo/uni.json
+      src: /home/cisco/ansible/aci/configs/aci_config.xml
+    delegate_to: localhost
+
+
+
+  - name: create bridge domain json from template
+    template:
+      src: "../aci/templates/aci_bridge_domain_create.j2"
+      dest: "../aci/configs/aci_bridge_domain_create.json"
+
+  - name: create bridge domain from posting json
+    aci_rest: action=post uri=/api/node/mo/uni/tn-{{ tenant }}/BD-{{ bdname }}.json config_file=/home/schockc/ansible/aci/configs/aci_bridge_domain_create.json host={{ inventory_hostname }} username={{ user }} password="{{ creds['password'] }}"
+    ignore_errors: true
