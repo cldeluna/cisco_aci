@@ -56,7 +56,7 @@
 
   - name: Display EPG
     debug:
-      msg: "EPG {{ epg[0] }} CONSUMES {{ item['fvRsCons'] }}"
+      msg: "EPG {{ epgs[0] }} CONSUMES {{ item['fvRsCons'] }}"
       with_items:
         - epg1
 
