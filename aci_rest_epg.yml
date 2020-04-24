@@ -94,6 +94,6 @@
       state: query
     delegate_to: localhost
 
-    - name: Display RAW APIC Results
-      debug:
-        var: query_result
+  - name: Display RAW APIC Results
+    debug:
+      var: query_result
