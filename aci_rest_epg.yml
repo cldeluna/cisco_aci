@@ -3,7 +3,7 @@
 # This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
 ###############################################################################
 - name: ACI EPG Query Playbook
-  hosts: aci_sandbox
+  hosts: local_aci
   gather_facts: no
 
 
