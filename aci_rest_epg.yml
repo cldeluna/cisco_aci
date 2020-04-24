@@ -66,3 +66,34 @@
     with_items: "{{ epg1 }}"
     when: item['fvRsProv'] is defined
 
+
+  - name: Query all provider contract to EPG bindings
+    aci_epg_to_contract:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      contract_type: provider
+      state: query
+    delegate_to: localhost
+    register: query_result
+
+  - name: Display RAW APIC Results
+    debug:
+      var: query_result
+
+  - name: Query a specific contract to EPG binding
+    aci_epg_to_contract:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user }}"
+      password: "{{ aci_pwd }}"
+      tenant: GDL-PROD-TN
+      ap: Citrix-ANP
+      epg: Citrix-EPG
+      contract: default
+      contract_type: provider
+      state: query
+    delegate_to: localhost
+
+    - name: Display RAW APIC Results
+      debug:
+        var: query_result
