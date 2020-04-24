@@ -63,7 +63,7 @@
     ignore_errors: yes
     when: item['fvRsCons'] is defined
 
-  - name: Display EPG1 Provided Contracts
+  - name: "Display EPG1 {{ epgs[0] }} Provided Contracts"
     debug:
 #      msg: "EPG CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
       msg: "EPG {{ epgs[0] }} PROVIDES {{ item['fvRsProv']['attributes']['tnVzBrCPName'] }} "
