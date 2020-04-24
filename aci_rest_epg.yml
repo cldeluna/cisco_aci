@@ -57,11 +57,11 @@
   - name: Display EPG
     debug:
 #      msg: "EPG CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
-      msg: "EPG CONSUMES {{ item }} "
+      msg: "EPG {{ item.item }} CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
 #      msg: "EPG CONSUMES {{ item }} "
     with_items: "{{ epg1 }}"
     ignore_errors: yes
-
+    when: item['fvRsCons']
 
 
 
