@@ -45,7 +45,7 @@
 
   - name: "Display APIC Results for {{ epgs[0] }}"
     debug:
-      msg: "EPG {{ epgs[0] }} query_result is {{query_result['results']['imdata'][0] }}"
+      msg: "EPG {{ epgs[0] }} query_result is {{query_result['results'][0]['imdata'] }}"
 
 #
 #  - name: Summary of APIC Cluster Health
