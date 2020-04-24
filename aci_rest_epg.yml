@@ -5,6 +5,7 @@
 - name: ACI EPG Query Playbook
   hosts: local_aci
   gather_facts: no
+  ignore_errors: yes
 
 
   vars:
@@ -22,7 +23,7 @@
 
     query_path: "/api/node/mo/uni/tn-{{ tenant }}/ap-{{ anp }}/epg-<EPG VALUE>.json?query-target=children"
     method: 'get'
-    ignore_errors: yes
+
 
 
   tasks:
