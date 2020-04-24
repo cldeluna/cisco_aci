@@ -18,6 +18,8 @@
     query_path: '/api/node/mo/uni/tn-GDL-PROD-TN/ap-Citrix-ANP/epg-<EPG VALUE>.json?query-target=children'
     method: 'get'
     ignore_errors: yes
+    tenant: GDL-PROD-TN
+    anp: Citrix-ANP
 
   #
 
@@ -30,7 +32,7 @@
       password: "{{ aci_pwd }}"
       validate_certs: no
       method: "{{ method }}"
-      path: "/api/node/mo/uni/tn-GDL-PROD-TN/ap-Citrix-ANP/epg-{{ item }}.json?query-target=children"
+      path: "/api/node/mo/uni/tn-{{ tenant }}/ap-{{ anp }}/epg-{{ item }}.json?query-target=children"
     delegate_to: localhost
     with_items: "{{ epgs }}"
     register: query_result
