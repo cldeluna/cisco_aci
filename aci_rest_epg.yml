@@ -49,12 +49,18 @@
       msg: "EPG CONSUMED CONTRACTS {{ epgs[0] }} query_result is {{query_result['results'][0]['imdata'] }}"
 
   - set_fact:
-      epg1contlist: "{{ query_result['results'][0]['imdata'] | map(attribute=fvRsCons['attributes']['tRn']) | list }}"
+      epg1: "{{ query_result['results'][0]['imdata'] }}"
 
+  - set_fact:
+      epg2: "{{ query_result['results'][1]['imdata'] }}"
 
   - name: Display EPG
     debug:
-      var: epg1contlist
+      msg: "EPG {{ epg[0] }} CONSUMES {{ item['fvRsCons'] }}"
+      with_items:
+        - epg1
+
+
 
 #
 #  - name: Summary of APIC Cluster Health
