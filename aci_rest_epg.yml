@@ -33,8 +33,8 @@
       username: "{{ aci_user }}"
       password: "{{ aci_pwd }}"
       validate_certs: no
-      method: "/api/node/mo/uni/tn-GDL-PROD-TN/ap-Citrix-ANP/epg-{{ item }}.json?query-target=children"
-      path: "{{ query_path }}"
+      method: "{{ method }}"
+      path: "/api/node/mo/uni/tn-GDL-PROD-TN/ap-Citrix-ANP/epg-{{ item }}.json?query-target=children"
     delegate_to: localhost
     with_list: "{{ epgs }}"
     register: query_result
