@@ -15,11 +15,12 @@
     epgs:
       - Citrix-EPG
       - SharePoint-EPG
-    query_path: '/api/node/mo/uni/tn-GDL-PROD-TN/ap-Citrix-ANP/epg-<EPG VALUE>.json?query-target=children'
-    method: 'get'
-    ignore_errors: yes
     tenant: GDL-PROD-TN
     anp: Citrix-ANP
+    query_path: "/api/node/mo/uni/tn-{{ tenant }}/ap-{{ anp }}/epg-<EPG VALUE>.json?query-target=children"
+    method: 'get'
+    ignore_errors: yes
+
 
   #
 
