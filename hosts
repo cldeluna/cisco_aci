@@ -1,7 +1,7 @@
 [local]
 localhost ansible_connection=local
 
-[aci]
+[aci_sandbox]
 sandboxapicdc.cisco.com
 
 [local_aci]
