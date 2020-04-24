@@ -44,7 +44,7 @@
     debug:
       var: query_result
 
-  - name: "Display APIC Results for {{ epgs[0] }}"
+  - name: "Display APIC Results for FIRST EPG"
     debug:
       msg: "EPG CONSUMED CONTRACTS {{ epgs[0] }} query_result is {{query_result['results'][0]['imdata'][0]['fvRsCons']['tnVzBrCPName'] }}"
 
