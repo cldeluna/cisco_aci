@@ -22,6 +22,7 @@
       - SharePoint-EPG
     query_path: '/api/node/mo/uni/tn-GDL-PROD-TN/ap-Citrix-ANP/epg-<EPG VALUE>.json?query-target=children'
     method: 'get'
+    ignore_errors: yes
 
   #
 
@@ -45,7 +46,7 @@
 
   - name: "Display APIC Results for {{ epgs[0] }}"
     debug:
-      msg: "EPG {{ epgs[0] }} query_result is {{query_result['results'][0]['imdata']['fvRsCons'] }}"
+      msg: "EPG CONSUMED CONTRACTS {{ epgs[0] }} query_result is {{query_result['results'][0]['imdata']['fvRsCons']['tnVzBrCPName'] }}"
 
 #
 #  - name: Summary of APIC Cluster Health
