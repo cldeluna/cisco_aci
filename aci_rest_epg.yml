@@ -58,6 +58,7 @@
     debug:
       msg: "EPG CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
     with_items: "{{ epg1 }}"
+    ignore_errors: yes
 
 
 
