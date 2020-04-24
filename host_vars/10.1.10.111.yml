@@ -2,3 +2,8 @@
 aci_user: admin
 aci_pwd: cisco123
 aci_host: 10.1.10.111
+epgs:
+  - Citrix-EPG
+  - SharePoint-EPG
+tenant: GDL-PROD-TN
+anp: Citrix-ANP
