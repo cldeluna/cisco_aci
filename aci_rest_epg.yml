@@ -54,7 +54,7 @@
   - set_fact:
       epg2: "{{ query_result['results'][1]['imdata'] }}"
 
-  - name: Display EPG1 Consumed Contracts
+  - name: "Display EPG {{ epgs[0] }} CONSUMED Contracts"
     debug:
 #      msg: "EPG CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
       msg: "EPG {{ epgs[0] }} CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
@@ -63,7 +63,7 @@
     ignore_errors: yes
     when: item['fvRsCons'] is defined
 
-  - name: "Display EPG1 {{ epgs[0] }} Provided Contracts"
+  - name: "Display EPG {{ epgs[0] }} PROVIDED Contracts"
     debug:
 #      msg: "EPG CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
       msg: "EPG {{ epgs[0] }} PROVIDES {{ item['fvRsProv']['attributes']['tnVzBrCPName'] }} "
