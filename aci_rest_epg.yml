@@ -56,38 +56,15 @@
 
   - name: "Display EPG {{ epgs[0] }} CONSUMED Contracts"
     debug:
-#      msg: "EPG CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
       msg: "EPG {{ epgs[0] }} CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
-#      msg: "EPG CONSUMES {{ item }} "
     with_items: "{{ epg1 }}"
     ignore_errors: yes
     when: item['fvRsCons'] is defined
 
   - name: "Display EPG {{ epgs[0] }} PROVIDED Contracts"
     debug:
-#      msg: "EPG CONSUMES {{ item['fvRsCons']['attributes']['tnVzBrCPName'] }} "
       msg: "EPG {{ epgs[0] }} PROVIDES {{ item['fvRsProv']['attributes']['tnVzBrCPName'] }} "
-#      msg: "EPG CONSUMES {{ item }} "
     with_items: "{{ epg1 }}"
     ignore_errors: yes
     when: item['fvRsProv'] is defined
 
-
-
-#
-#  - name: Summary of APIC Cluster Health
-#    debug:
-#      msg: "APIC: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
-#    with_items: "{{ query_result['imdata'] }}"
-#
-#  - name: Look for APICs which are NOT FULLY FIT
-#    debug:
-#      msg: "APIC NOT FULLY FIT: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
-#    with_items: "{{ query_result['imdata'] }}"
-#    when: item['infraWiNode']['attributes']['health']  != 'fully-fit'
-#
-#  - name: Look for APICs which ARE FULLY FIT
-#    debug:
-#      msg: "APIC FULLY FIT: {{ item['infraWiNode']['attributes']['nodeName'] }} Health is {{ item['infraWiNode']['attributes']['health'] }} "
-#    with_items: "{{ query_result['imdata'] }}"
-#    when: item['infraWiNode']['attributes']['health']  == 'fully-fit'
