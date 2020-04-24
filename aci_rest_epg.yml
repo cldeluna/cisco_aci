@@ -61,7 +61,7 @@
 #      msg: "EPG CONSUMES {{ item }} "
     with_items: "{{ epg1 }}"
     ignore_errors: yes
-    when: item['fvRsCons']
+    when: item['fvRsCons'] is defined
 
 
 
