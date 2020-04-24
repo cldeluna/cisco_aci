@@ -78,7 +78,7 @@
     delegate_to: localhost
     register: query_result
 
-  - name: Display RAW APIC Results
+  - name: Display RAW APIC Results of Query all provider contract to EPG bindings
     debug:
       var: query_result
 
@@ -96,6 +96,6 @@
       state: query
     delegate_to: localhost
 
-  - name: Display RAW APIC Results
+  - name: Display RAW APIC Results Query a specific contract to EPG binding
     debug:
       var: query_result
