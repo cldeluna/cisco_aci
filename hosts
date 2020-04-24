@@ -3,3 +3,6 @@ localhost ansible_connection=local
 
 [aci]
 sandboxapicdc.cisco.com
+
+[local_aci]
+10.1.10.111
