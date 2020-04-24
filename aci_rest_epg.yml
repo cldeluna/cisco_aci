@@ -49,7 +49,7 @@
       msg: "EPG CONSUMED CONTRACTS {{ epgs[0] }} query_result is {{query_result['results'][0]['imdata'] }}"
 
   - set_fact:
-      epg1contlist: "{{ query_result['results'][0]['imdata'] | map(attribute='fvRsCons['attributes']['tRn']) | list }}"
+      epg1contlist: "{{ query_result['results'][0]['imdata'] | map(attribute=fvRsCons['attributes']['tRn']) | list }}"
 
 
   - name: Display EPG
