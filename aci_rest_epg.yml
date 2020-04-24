@@ -3,7 +3,7 @@
 # This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
 ###############################################################################
 - name: ACI EPG Query Playbook
-  hosts: local_aci
+  hosts: aci_sandbox
   gather_facts: no
   ignore_errors: yes
 
@@ -16,10 +16,10 @@
 
     # These variables should be updated for the EPGs to pull and their corresponding tenant and anps.
     epgs:
-      - Citrix-EPG
-      - SharePoint-EPG
-    tenant: GDL-PROD-TN
-    anp: Citrix-ANP
+      - Web
+      - DB
+    tenant: Heroes
+    anp: Power_Up
 
     query_path: "/api/node/mo/uni/tn-{{ tenant }}/ap-{{ anp }}/epg-<EPG VALUE>.json?query-target=children"
     method: 'get'
