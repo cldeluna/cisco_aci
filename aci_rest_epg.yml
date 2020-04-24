@@ -72,6 +72,7 @@
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
       password: "{{ aci_pwd }}"
+      validate_certs: no
       contract_type: provider
       state: query
     delegate_to: localhost
@@ -86,6 +87,7 @@
       host: "{{ aci_host }}"
       username: "{{ aci_user }}"
       password: "{{ aci_pwd }}"
+      validate_certs: no
       tenant: GDL-PROD-TN
       ap: Citrix-ANP
       epg: Citrix-EPG
