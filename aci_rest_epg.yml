@@ -67,7 +67,7 @@
 
   - name: Keep names
     debug:
-      msg: "{{ query_result['results'][1]['imdata'] | json_query('[*].{item: item}') }}"
+      msg: "{{ query_result['results'] | json_query('[*].{item: item}') }}"
 
 #
 #    # Using the aci_epg_to_contract ACI Ansible Module
