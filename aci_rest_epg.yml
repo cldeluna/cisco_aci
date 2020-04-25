@@ -73,7 +73,7 @@
   - name: Display Contracts
     debug:
       msg: "{{ query_result['results'] | json_query('[*].imdata.[*].fvRsCons.attributes.dn') }}"
-    when: item['fvRsCons'] is defined
+    when: [*].imdata.[*].fvRsCons is defined
 #
 #    # Using the aci_epg_to_contract ACI Ansible Module
 #  - name: ACI Ansible Module > Query all provider contract to EPG bindings
