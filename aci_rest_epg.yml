@@ -65,35 +65,40 @@
     with_items: "{{ epg1 }}"
     when: item['fvRsProv'] is defined
 
-    # Using the aci_epg_to_contract ACI Ansible Module
-  - name: ACI Ansible Module > Query all provider contract to EPG bindings
-    aci_epg_to_contract:
-      host: "{{ aci_host }}"
-      username: "{{ aci_user }}"
-      password: "{{ aci_pwd }}"
-      validate_certs: no
-      contract_type: provider
-      state: query
-    delegate_to: localhost
-    register: query_result
-
-  - name: Display RAW APIC Results of Query all provider contract to EPG bindings
+  - name: Keep names
     debug:
-      var: query_result
+      msg: "{{ query_result['results'][1]['imdata'] | json_query('[*].{item: item}') }}"
 
-  - name: ACI Ansible Module > Query a specific contract to EPG binding
-    aci_epg_to_contract:
-      host: "{{ aci_host }}"
-      username: "{{ aci_user }}"
-      password: "{{ aci_pwd }}"
-      validate_certs: no
-      tenant: GDL-PROD-TN
-      ap: Citrix-ANP
-      epg: Citrix-EPG
-      contract: default
-      contract_type: provider
-      state: query
-    delegate_to: localhost
+#
+#    # Using the aci_epg_to_contract ACI Ansible Module
+#  - name: ACI Ansible Module > Query all provider contract to EPG bindings
+#    aci_epg_to_contract:
+#      host: "{{ aci_host }}"
+#      username: "{{ aci_user }}"
+#      password: "{{ aci_pwd }}"
+#      validate_certs: no
+#      contract_type: provider
+#      state: query
+#    delegate_to: localhost
+#    register: query_result
+#
+#  - name: Display RAW APIC Results of Query all provider contract to EPG bindings
+#    debug:
+#      var: query_result
+#
+#  - name: ACI Ansible Module > Query a specific contract to EPG binding
+#    aci_epg_to_contract:
+#      host: "{{ aci_host }}"
+#      username: "{{ aci_user }}"
+#      password: "{{ aci_pwd }}"
+#      validate_certs: no
+#      tenant: GDL-PROD-TN
+#      ap: Citrix-ANP
+#      epg: Citrix-EPG
+#      contract: default
+#      contract_type: provider
+#      state: query
+#    delegate_to: localhost
 
   - name: Display RAW APIC Results Query a specific contract to EPG binding
     debug:
