@@ -16,10 +16,10 @@
 
     # These variables should be updated for the EPGs to pull and their corresponding tenant and anps.
     epgs:
-      - Web
-      - DB
+      - web
+      - db
     tenant: Heroes
-    anp: Power_Up
+    anp: Save_The_Planet
 
     query_path: "/api/node/mo/uni/tn-{{ tenant }}/ap-{{ anp }}/epg-<EPG VALUE>.json?query-target=children"
     method: 'get'
@@ -65,10 +65,14 @@
     with_items: "{{ epg1 }}"
     when: item['fvRsProv'] is defined
 
-  - name: Keep names
+  - name: Display EPGs in Result Payload
     debug:
       msg: "{{ query_result['results'] | json_query('[*].{item: item}') }}"
 
+
+  - name: Display EPGs in Result Payload
+    debug:
+      msg: "{{ query_result['results'] | json_query('[*].{item: item}') }}"
 #
 #    # Using the aci_epg_to_contract ACI Ansible Module
 #  - name: ACI Ansible Module > Query all provider contract to EPG bindings
