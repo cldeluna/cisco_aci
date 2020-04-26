@@ -3,7 +3,7 @@
 # Test Playbook
 ###############################################################################
 - name: ACI Tenant Query Playbook
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
   vars:

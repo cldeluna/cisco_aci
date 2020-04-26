@@ -8,7 +8,7 @@
 # ansible-playbook -i hosts aci_config_snapshot.yml
 ###############################################################################
 - name: ACI Configuration Snapshot
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
 

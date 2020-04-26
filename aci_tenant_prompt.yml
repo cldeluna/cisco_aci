@@ -7,7 +7,7 @@
 ###############################################################################
 
 - name: ACI Playbook to Perform User Prompted Action on Tenant
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
   vars:

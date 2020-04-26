@@ -3,7 +3,7 @@
 # This playbook executes actions on an APIC Controller via the Ansible ACI Rest Module
 ###############################################################################
 - name: ACI Backup Export Playbook
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
   vars:

@@ -3,7 +3,7 @@
 # This playbook executes a basic Tenant query
 ###############################################################################
 - name: ACI Tenant Query Playbook
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
 

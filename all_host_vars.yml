@@ -3,7 +3,7 @@
 # Test Playbook
 ###############################################################################
 - name: ACI Playbook to Perform User Prompted Action on VRF
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
   vars:

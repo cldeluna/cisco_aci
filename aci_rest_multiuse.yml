@@ -14,7 +14,7 @@
 ###############################################################################
 
 - name: ACI REST Multi Use - Multi Purpose
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
   vars:

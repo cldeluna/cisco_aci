@@ -3,7 +3,7 @@
 # This playbook executes a GET action on an APIC Controller via the Ansible ACI Rest Module
 ###############################################################################
 - name: ACI Tenant GET Playbook
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
   vars:

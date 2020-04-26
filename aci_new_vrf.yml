@@ -8,7 +8,7 @@
 # ansible-playbook -i hosts aci_new_vrf.yml
 ###############################################################################
 - name: ACI Tenant Selection and VRF CRUD Playbook
-  hosts: aci
+  hosts: aci_sandbox
   gather_facts: no
 
 
