@@ -35,6 +35,9 @@
       msg: "{{ item.configSnapshot.attributes.fileName }}"
     with_items: "{{ query_result.current }}"
 
+  - debug:
+      msg: "Total Snapshot Files BEFORE backup: {{ query_result.current|length }}"
+
   - name: Create a snapshot of ACI "{{ aci_host}}"
     aci_config_snapshot:
       host: "{{ aci_host }}"
@@ -64,3 +67,5 @@
     debug:
       msg: "{{ item.configSnapshot.attributes.fileName }}"
     with_items: "{{ query_result.current }}"
+  - debug:
+      msg: "Total Snapshot Files AFTER backup: {{ query_result.current|length }}"
