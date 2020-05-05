@@ -53,9 +53,9 @@
     delegate_to: localhost
     register: aci_snapshot
 
-  - pause:
-      seconds:30
 
+- pause:
+    seconds: 30
   - name: Query Snapshots After Creating a new Snapshot
     aci_config_snapshot:
       host: "{{ aci_host }}"
